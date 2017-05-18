@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840301201EB56F0000B8E607 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8403011F1EB56F0000B8E607 /* GradientView.swift */; };
+		84035F661EC2DF820054CF9B /* GarageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84035F651EC2DF820054CF9B /* GarageViewController.swift */; };
+		84142B0E1EB687C000714173 /* SpotTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84142B0D1EB687C000714173 /* SpotTypeViewController.swift */; };
+		84142B101EB69AA700714173 /* MeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84142B0F1EB69AA700714173 /* MeterViewController.swift */; };
 		846ACC681EAFE50700134DE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ACC671EAFE50700134DE6 /* AppDelegate.swift */; };
 		846ACC6A1EAFE50700134DE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ACC691EAFE50700134DE6 /* ViewController.swift */; };
 		846ACC6D1EAFE50700134DE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846ACC6B1EAFE50700134DE6 /* Main.storyboard */; };
 		846ACC6F1EAFE50700134DE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846ACC6E1EAFE50700134DE6 /* Assets.xcassets */; };
 		846ACC721EAFE50700134DE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846ACC701EAFE50700134DE6 /* LaunchScreen.storyboard */; };
 		846ACC7D1EAFE50700134DE6 /* CarSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ACC7C1EAFE50700134DE6 /* CarSpotTests.swift */; };
+		84E4FD831ECA76E900DCF9C1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E4FD821ECA76E900DCF9C1 /* MapViewController.swift */; };
+		84E4FD851ECA7E1C00DCF9C1 /* SpotLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E4FD841ECA7E1C00DCF9C1 /* SpotLocale.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8403011F1EB56F0000B8E607 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		84035F651EC2DF820054CF9B /* GarageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageViewController.swift; sourceTree = "<group>"; };
+		84142B0D1EB687C000714173 /* SpotTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotTypeViewController.swift; sourceTree = "<group>"; };
+		84142B0F1EB69AA700714173 /* MeterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeterViewController.swift; sourceTree = "<group>"; };
 		846ACC641EAFE50700134DE6 /* CarSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846ACC671EAFE50700134DE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		846ACC691EAFE50700134DE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +46,8 @@
 		846ACC781EAFE50700134DE6 /* CarSpotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		846ACC7C1EAFE50700134DE6 /* CarSpotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSpotTests.swift; sourceTree = "<group>"; };
 		846ACC7E1EAFE50700134DE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84E4FD821ECA76E900DCF9C1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		84E4FD841ECA7E1C00DCF9C1 /* SpotLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotLocale.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +91,13 @@
 			children = (
 				846ACC671EAFE50700134DE6 /* AppDelegate.swift */,
 				846ACC691EAFE50700134DE6 /* ViewController.swift */,
+				84142B0D1EB687C000714173 /* SpotTypeViewController.swift */,
+				84035F651EC2DF820054CF9B /* GarageViewController.swift */,
+				84142B0F1EB69AA700714173 /* MeterViewController.swift */,
+				84E4FD821ECA76E900DCF9C1 /* MapViewController.swift */,
 				846ACC6B1EAFE50700134DE6 /* Main.storyboard */,
+				84E4FD841ECA7E1C00DCF9C1 /* SpotLocale.swift */,
+				8403011F1EB56F0000B8E607 /* GradientView.swift */,
 				846ACC6E1EAFE50700134DE6 /* Assets.xcassets */,
 				846ACC701EAFE50700134DE6 /* LaunchScreen.storyboard */,
 				846ACC731EAFE50700134DE6 /* Info.plist */,
@@ -146,7 +164,13 @@
 				TargetAttributes = {
 					846ACC631EAFE50700134DE6 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = TRX5834UGB;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					846ACC771EAFE50700134DE6 = {
 						CreatedOnToolsVersion = 8.3;
@@ -199,8 +223,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84142B101EB69AA700714173 /* MeterViewController.swift in Sources */,
+				84E4FD851ECA7E1C00DCF9C1 /* SpotLocale.swift in Sources */,
 				846ACC6A1EAFE50700134DE6 /* ViewController.swift in Sources */,
 				846ACC681EAFE50700134DE6 /* AppDelegate.swift in Sources */,
+				84142B0E1EB687C000714173 /* SpotTypeViewController.swift in Sources */,
+				840301201EB56F0000B8E607 /* GradientView.swift in Sources */,
+				84035F661EC2DF820054CF9B /* GarageViewController.swift in Sources */,
+				84E4FD831ECA76E900DCF9C1 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +369,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TRX5834UGB;
 				INFOPLIST_FILE = CarSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MobileDevProject.CarSpot;
@@ -351,6 +382,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TRX5834UGB;
 				INFOPLIST_FILE = CarSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MobileDevProject.CarSpot;
@@ -406,6 +438,7 @@
 				846ACC831EAFE50700134DE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		846ACC841EAFE50700134DE6 /* Build configuration list for PBXNativeTarget "CarSpotTests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +447,7 @@
 				846ACC861EAFE50700134DE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

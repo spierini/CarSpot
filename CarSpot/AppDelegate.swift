@@ -7,17 +7,42 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        registerForRichNotifications()
         return true
     }
+    
+//    func registerForRichNotifications() {
+//        
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
+//            if error != nil {
+//                print(error?.localizedDescription ?? "error")
+//            }
+//            if granted {
+//                print("Permission granted")
+//            } else {
+//                print("Permission not granted")
+//            }
+//        }
+//        
+//        //actions defination
+//        let action1 = UNNotificationAction(identifier: "action1", title: "Action First", options: [.foreground])
+//        let action2 = UNNotificationAction(identifier: "action2", title: "Action Second", options: [.foreground])
+//        
+//        let category = UNNotificationCategory(identifier: "actionCategory", actions: [action1,action2], intentIdentifiers: [], options: [])
+//        
+//        UNUserNotificationCenter.current().setNotificationCategories([category])
+//        
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
