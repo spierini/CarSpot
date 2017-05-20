@@ -36,13 +36,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     }
     
-    @IBAction func refreshLocation(_ sender: UIBarButtonItem) {
+    
+    @IBAction func showCurrentLocation(_ sender: UIButton) {
+        
         let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         let currRegion = MKCoordinateRegion(center: currentCoordinate, span: span)
         
         map.setRegion(currRegion, animated: true)
-
     }
+    
+    @IBAction func showSpotLocation(_ sender: UIButton) {
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        let startRegion = MKCoordinateRegion(center: spotCoordinate!, span: span)
+        map.setRegion(startRegion, animated: true)
+    }
+    
+    @IBAction func saveSpot(_ sender: UIBarButtonItem) {
+        
+        //send all relevant data to firebase to store as new spot
+    }
+    
+    
     
     @IBAction func getDirections(_ sender: UIButton) {
         
@@ -71,39 +86,38 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         containerView.layer.shadowOpacity = 1.0
         containerView.layer.shadowRadius = 2
         containerView.layer.cornerRadius = 5
-        
-        //set map location to your current location
-        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
 
-        let startRegion = MKCoordinateRegion(center: spotCoordinate!, span: span)
-        map.setRegion(startRegion, animated: true)
         
         self.map.showsUserLocation = true
-        // Do any additional setup after loading the view.
+        // get locations and place annotations on map
         gatherLocales()
         placeAnnotations()
         configureLocationManager()
+        //zoom map to include all annotations
+        self.map.showAnnotations(self.spotLocales, animated: true)
+
+
     }
     
     //MARK: Location Manager functions
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //get current location
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("currlocations = \(locValue.latitude) \(locValue.longitude)")
         
         //when location updates set it to the center
-        for nextLocation in locations {
-            var newRegion = map.region
-            newRegion.center = nextLocation.coordinate
-            map.setRegion(newRegion, animated: true)
-        }
+//        for nextLocation in locations {
+//            var newRegion = map.region
+//            newRegion.center = nextLocation.coordinate
+//            map.setRegion(newRegion, animated: true)
+//        }
     }
     
     //MARK: MapView Function
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
+        //
         if (annotation.subtitle! == "Spot HQ") {
-//            let pinView = MKPinAnnotationView()
-//            pinView.pinTintColor = .red
-//            pinView.canShowCallout = true
-//            return pinView
             
             // Better to make this class property
             let annotationIdentifier = "AnnotationIdentifier"

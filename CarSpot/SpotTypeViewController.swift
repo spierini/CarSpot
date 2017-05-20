@@ -20,18 +20,21 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
     var locationManager = CLLocationManager()
     var currentLocation = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     
+    // MARK: IBAction functions
     
-    //button pressed
+    // meter pressed
     @IBAction func parkingMeter(_ sender: UIButton) {
         
         self.performSegue(withIdentifier: "meterSegue", sender: nil)
     }
     
-    //button pressed
+    // garage pressed
     @IBAction func parkingGarage(_ sender: UIButton) {
     }
     
-    //ask for camera or photo option
+    // MARK: Private Functions
+    
+    //ask for camera or photo library access
     func giveAlert() {
         let alert = UIAlertController(title: "CarSpot Alert", message: "Do you wish to take or select a photo?",
                                       preferredStyle: .actionSheet)
@@ -56,7 +59,7 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
         present(alert, animated: true, completion:nil)
     }
     
-    //grant access to camera and take a photo
+    // Grant access to camera and take a photo
     func takePhoto() {
         
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
@@ -67,6 +70,7 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
             self.present(imagePicker, animated: true, completion: nil)
         }
         else{
+            // no camera available
             let alert = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style:.default, handler: nil)
             alert.addAction(ok)
@@ -74,7 +78,7 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
-    //grant access to photo library and choose a photo
+    // Grant access to photo library and choose a photo
     func pickImage() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
             let imagePicker = UIImagePickerController()
@@ -93,11 +97,32 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    // create dropshadows and rounded edges for buttons
+    func giveButtonEffects(button: UIButton) {
+        
+        button.layer.shadowColor = UIColor.darkGray.cgColor
+        button.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 2
+        button.layer.cornerRadius = 5
+    }
+    
+    // MARK: Location Manager Functions
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("spotlocations = \(locValue.latitude) \(locValue.longitude)")
+        currentLocation.latitude = locValue.latitude
+        currentLocation.longitude = locValue.longitude
+    }
+    
 
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         giveButtonEffects(button: parkingMeterButton)
         giveButtonEffects(button: parkingGarageButton)
@@ -108,7 +133,6 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
         imageDisplay.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         imageDisplay.layer.shadowOpacity = 1.0
         imageDisplay.layer.shadowRadius = 2
-        
         
         
         
@@ -125,14 +149,7 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        // Do any additional setup after loading the view.
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        currentLocation.latitude = locValue.latitude
-        currentLocation.longitude = locValue.longitude
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -140,15 +157,6 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-
-    func giveButtonEffects(button: UIButton) {
-        
-        button.layer.shadowColor = UIColor.darkGray.cgColor
-        button.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        button.layer.shadowOpacity = 1.0
-        button.layer.shadowRadius = 2
-        button.layer.cornerRadius = 5
-    }
     
     // MARK: - Navigation
 

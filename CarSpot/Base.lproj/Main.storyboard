@@ -232,11 +232,6 @@
                                     <segue destination="RbW-wq-u09" kind="presentation" identifier="mapSegue" id="KpQ-gR-cLz"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AJA-4c-qtG">
-                                <rect key="frame" x="16" y="335" width="343" height="4"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -254,7 +249,6 @@
                                 <segue destination="q2Z-OP-9PH" kind="unwind" unwindAction="setSpotUnwindWithSegue:" id="DdS-8I-mR7"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="45M-41-1G9"/>
                     </navigationItem>
                     <connections>
                         <outlet property="alarmLabel" destination="cy1-Hf-JWt" id="iIb-NI-Ejb"/>
@@ -477,6 +471,22 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYt-Jj-JLw">
+                                <rect key="frame" x="16" y="515" width="155" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Current Location"/>
+                                <connections>
+                                    <action selector="showCurrentLocation:" destination="W7V-Py-TZX" eventType="touchUpInside" id="LXJ-E9-7Zq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RM-xi-cTa">
+                                <rect key="frame" x="204" y="515" width="155" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Spot Location"/>
+                                <connections>
+                                    <action selector="showSpotLocation:" destination="W7V-Py-TZX" eventType="touchUpInside" id="cWz-Ua-ACK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -494,9 +504,9 @@
                                 <segue destination="DGr-5N-BQx" kind="unwind" unwindAction="setSpotUnwindWithSegue:" id="swC-ny-KBj"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="6et-ur-LbB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6et-ur-LbB">
                             <connections>
-                                <action selector="refreshLocation:" destination="W7V-Py-TZX" id="jZV-Px-wBR"/>
+                                <action selector="saveSpot:" destination="W7V-Py-TZX" id="qHz-QA-NJq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -608,6 +618,6 @@
         <image name="parking-1" width="118" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bhe-ek-a3v"/>
+        <segue reference="KpQ-gR-cLz"/>
     </inferredMetricsTieBreakers>
 </document>

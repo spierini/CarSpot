@@ -53,11 +53,10 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     //when pressing the start button
     @IBAction func startTimer(_ sender: UIButton) {
-        //hourCount = pickerView.selectedRow(inComponent: 0)
-        //minCount = pickerView.selectedRow(inComponent: 1)
         
+        //get number of seconds from the hour/minute pickerview selection
         numSeconds = (pickerView.selectedRow(inComponent: 0) * 3600) + (pickerView.selectedRow(inComponent: 1) * 60)
-        
+        // perform action function every 1.0 time interval
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
         let (h,m,s) = secondsToHoursMinutesSeconds(seconds: numSeconds)

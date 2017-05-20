@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var setButton: UIButton!
     @IBOutlet weak var findButton: UIButton!
     
+    // MARK: IBAction functions
     
     @IBAction func setButtonPressed(_ sender: UIButton) {
         
@@ -35,6 +36,8 @@ class ViewController: UIViewController {
 
         
     }
+    
+    // MARK: Private functions
     
     func giveButtonEffects(button: UIButton) {
         
