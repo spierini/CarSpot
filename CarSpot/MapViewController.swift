@@ -16,10 +16,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     //saved location when user had parked
     var spotCoordinate: CLLocationCoordinate2D? //35.300618, -120.662464   (on campus - where parked)
     
-    //will be your current location as of this instance
-    //let currentCoordinate = CLLocationCoordinate2D(latitude: 35.275185, longitude: -120.662692)
     //current location of user trying to find their car
-    let currentCoordinate = CLLocationCoordinate2D(latitude: 35.281076, longitude: -120.660846)
+    var currentCoordinate = CLLocationCoordinate2D(latitude: 35.281076, longitude: -120.660846)
     
     var spotLocales = [SpotLocale]()
     
@@ -101,16 +99,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     //MARK: Location Manager functions
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //get current location
+        //set current location
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+//        currentCoordinate.latitude = locValue.latitude
+//        currentCoordinate.longitude = locValue.longitude
         print("currlocations = \(locValue.latitude) \(locValue.longitude)")
         
-        //when location updates set it to the center
-//        for nextLocation in locations {
-//            var newRegion = map.region
-//            newRegion.center = nextLocation.coordinate
-//            map.setRegion(newRegion, animated: true)
-//        }
+
     }
     
     //MARK: MapView Function

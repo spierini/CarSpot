@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>886022568445-8v1qjua30plc6e9p321j67s7efv93p2d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.886022568445-8v1qjua30plc6e9p321j67s7efv93p2d</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBLF7MoHmxpYaROp0JX2wekO8w-m6hMCQY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>886022568445</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.MobileDevProject.CarSpot</string>
+	<key>PROJECT_ID</key>
+	<string>carspot-a42bf</string>
+	<key>STORAGE_BUCKET</key>
+	<string>carspot-a42bf.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:886022568445:ios:4051a4088cc0e1d9</string>
+	<key>DATABASE_URL</key>
+	<string>https://carspot-a42bf.firebaseio.com/</string>
+</dict>
+</plist>

@@ -422,7 +422,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmY-YU-Te0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="RhD-EU-x1T" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2862" y="382"/>
+            <point key="canvasLocation" x="3020" y="382"/>
         </scene>
         <!--Find Car-->
         <scene sceneID="2Gh-bI-u8H">
@@ -591,7 +591,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yG-75-UTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="382"/>
+            <point key="canvasLocation" x="2196" y="382"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CEv-gj-D0K">
@@ -618,6 +618,6 @@
         <image name="parking-1" width="118" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KpQ-gR-cLz"/>
+        <segue reference="bhe-ek-a3v"/>
     </inferredMetricsTieBreakers>
 </document>

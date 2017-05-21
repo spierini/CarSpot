@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import Firebase
+import CoreLocation
 
 class ViewController: UIViewController {
 
+    // You can combine this with the init but not in the 1st VC
+    var spotRoot : FIRDatabaseReference?
+    
     @IBOutlet weak var setButton: UIButton!
     @IBOutlet weak var findButton: UIButton!
     
@@ -29,13 +34,46 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // This must precede getting the database reference
+        FIRDatabase.database().persistenceEnabled = true
+        spotRoot = FIRDatabase.database().reference(withPath: "ParkingSpots")
+        
+        let garage1 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.278882, longitude:  -120.661616), named: "1260 Chorro St Garage", detail: "medium")
+        let g1Ref = spotRoot?.child(garage1.title!)
+        g1Ref?.setValue(garage1.toAnyObject())
+        
+        let garage2 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.281721, longitude:  -120.664026), named: "812 Palm St Garage", detail: "low")
+        let g2Ref = spotRoot?.child(garage2.title!)
+        g2Ref?.setValue(garage2.toAnyObject())
 
+        let garage3 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.281721, longitude:  -120.664026), named: "Public Works Garage", detail: "low")
+        let g3Ref = spotRoot?.child(garage3.title!)
+        g3Ref?.setValue(garage3.toAnyObject())
+        
+        
+
+        // Do any additional setup after loading the view, typically from a nib.
         giveButtonEffects(button: setButton)
         giveButtonEffects(button: findButton)
 
         
     }
+    
+//    func setRetrieveCallback() {
+//        spotRoot?.queryOrdered(byChild: "ParkingSpots").observe(.value, with:
+//            { snapshot in
+//                
+//                var newStands = [TacoStand]()
+//                
+//                for item in snapshot.children {
+//                    newStands.append(TacoStand(snapshot: item as! FIRDataSnapshot))
+//                }
+//                
+//                self.tacoStands = newStands
+//                self.tableView.reloadData()
+//        })
+//    }
     
     // MARK: Private functions
     
