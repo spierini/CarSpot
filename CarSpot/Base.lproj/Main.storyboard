@@ -78,7 +78,7 @@
         <!--Find Spot View Controller-->
         <scene sceneID="g19-yk-wFr">
             <objects>
-                <viewController id="ls2-nF-WWx" customClass="FindSpotViewController" customModule="CarSpot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="findSpotVC" id="ls2-nF-WWx" customClass="FindSpotViewController" customModule="CarSpot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tdf-d1-U8j"/>
                         <viewControllerLayoutGuide type="bottom" id="s3w-YX-UgI"/>
@@ -87,7 +87,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="20Z-1n-rsk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="20Z-1n-rsk">
                                 <rect key="frame" x="16" y="379" width="343" height="268"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -164,7 +164,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="OgH-qF-IRP">
                             <connections>
-                                <segue destination="FDU-vj-aa5" kind="unwind" unwindAction="setSpotUnwindWithSegue:" id="JIY-sZ-Oao"/>
+                                <action selector="cancelStop:" destination="ls2-nF-WWx" id="BiR-dE-LYo"/>
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="WOO-rX-raD">
@@ -180,6 +180,7 @@
                     <connections>
                         <outlet property="map" destination="V3I-vA-yeg" id="9mX-5D-KMf"/>
                         <outlet property="spotTableView" destination="20Z-1n-rsk" id="TLf-5H-dWd"/>
+                        <segue destination="FDU-vj-aa5" kind="unwind" identifier="exitSegue" unwindAction="setSpotUnwindWithSegue:" id="GeM-BK-vc0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4P-af-deJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -622,6 +623,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="6et-ur-LbB">
                             <connections>
                                 <action selector="saveSpot:" destination="W7V-Py-TZX" id="qHz-QA-NJq"/>
+                                <segue destination="ls2-nF-WWx" kind="show" identifier="saveSegue" id="oxw-oE-Lp4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -752,5 +754,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="bhe-ek-a3v"/>
+        <segue reference="oxw-oE-Lp4"/>
     </inferredMetricsTieBreakers>
 </document>

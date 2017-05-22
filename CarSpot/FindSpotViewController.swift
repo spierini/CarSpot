@@ -19,6 +19,8 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
     var spotRoot : FIRDatabaseReference?
     var spotData = [SpotLocale]()
     
+    var savedSpot : SpotLocale?
+    
     var locationManager = CLLocationManager()
     var currentLocation = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     var spotLocation : CLLocationCoordinate2D?
@@ -50,6 +52,12 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
         }
     }
 
+    @IBAction func cancelStop(_ sender: UIBarButtonItem) {
+        locationManager.stopUpdatingLocation()
+        //call segue
+        self.performSegue(withIdentifier: "exitSegue", sender: nil)
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +85,7 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             { snapshot in
                 
                 var newSpots = [SpotLocale]()
+                self.addSavedSpot(newSpot: self.savedSpot)
                 
                 for item in snapshot.children {
                     newSpots.append(SpotLocale(snapshot: item as! FIRDataSnapshot))
@@ -97,6 +106,21 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
                     
                 }
         })
+    }
+    
+    // add a saved spot to the database
+    func addSavedSpot(newSpot : SpotLocale?) {
+        
+        if(newSpot != nil) {
+//            spotData.append(newSpot!)
+            // add to Firebase
+            let newSpotRef = spotRoot?.child((newSpot?.title!)!)
+            newSpotRef?.setValue(newSpot?.toAnyObject())
+        }
+        else {
+            print("No saved spot added")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

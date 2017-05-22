@@ -51,7 +51,6 @@ class ViewController: UIViewController {
         let g3Ref = spotRoot?.child(garage3.title!)
         g3Ref?.setValue(garage3.toAnyObject())
         
-        
 
         // Do any additional setup after loading the view, typically from a nib.
         giveButtonEffects(button: setButton)

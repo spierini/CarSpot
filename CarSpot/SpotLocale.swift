@@ -44,7 +44,6 @@ class SpotLocale : NSObject, MKAnnotation {
         
         longitude = (snapvalues["longitude"] as? Double)!
         latitude = (snapvalues["latitude"] as? Double)!
-        print("coordinates: \(coordinate)")
         ref = snapshot.ref
         
         //call super class initializer second rather than first

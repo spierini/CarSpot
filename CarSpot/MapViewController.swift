@@ -53,6 +53,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBAction func saveSpot(_ sender: UIBarButtonItem) {
         
         //send all relevant data to firebase to store as new spot
+//        let savedSpot = SpotLocale(coord: spotCoordinate!, named: "NoNameYet", detail: "N/A")
+//        
+//        let destVC = self.storyboard?.instantiateViewController(withIdentifier: "findSpotVC") as! FindSpotViewController
+//        destVC.addSpot(newSpot: savedSpot)
+//        self.present(destVC, animated: true, completion: nil)
     }
     
     
@@ -173,6 +178,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         return (currLoc.latitude + (DestLoc.latitude - currLoc.latitude) * per, currLoc.longitude + (DestLoc.longitude - currLoc.longitude) * per);
     }
     
+    //resize a UIImage for use on the map
     func imageResize (image: UIImage, sizeChange: CGSize) -> UIImage {
         
         let hasAlpha = true
@@ -201,14 +207,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "saveSegue" {
+            let savedSpot = SpotLocale(coord: spotCoordinate!, named: "NoNameYet", detail: "N/A")
+
+            let destVC = segue.destination as? FindSpotViewController
+            
+            destVC?.savedSpot = savedSpot
+            
+        }
+        
     }
-    */
+    
 
 }
