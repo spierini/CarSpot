@@ -23,6 +23,8 @@
 		84E4FD851ECA7E1C00DCF9C1 /* SpotLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E4FD841ECA7E1C00DCF9C1 /* SpotLocale.swift */; };
 		84F43D641ED10F1000E6EAEC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F43D631ED10F1000E6EAEC /* GoogleService-Info.plist */; };
 		84F43D651ED10F1000E6EAEC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F43D631ED10F1000E6EAEC /* GoogleService-Info.plist */; };
+		84F43D671ED12F8800E6EAEC /* FindSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F43D661ED12F8800E6EAEC /* FindSpotViewController.swift */; };
+		84F43D691ED1339E00E6EAEC /* SpotTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F43D681ED1339E00E6EAEC /* SpotTVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		84E4FD821ECA76E900DCF9C1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		84E4FD841ECA7E1C00DCF9C1 /* SpotLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotLocale.swift; sourceTree = "<group>"; };
 		84F43D631ED10F1000E6EAEC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84F43D661ED12F8800E6EAEC /* FindSpotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindSpotViewController.swift; sourceTree = "<group>"; };
+		84F43D681ED1339E00E6EAEC /* SpotTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotTVCell.swift; sourceTree = "<group>"; };
 		90EC04B3C9EE448893C3CFBE /* Pods_CarSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A210F4817C6F80A38AF7B7B6 /* Pods-CarSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarSpot/Pods-CarSpot.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +136,8 @@
 				84142B0F1EB69AA700714173 /* MeterViewController.swift */,
 				84E4FD821ECA76E900DCF9C1 /* MapViewController.swift */,
 				846ACC6B1EAFE50700134DE6 /* Main.storyboard */,
+				84F43D661ED12F8800E6EAEC /* FindSpotViewController.swift */,
+				84F43D681ED1339E00E6EAEC /* SpotTVCell.swift */,
 				84E4FD841ECA7E1C00DCF9C1 /* SpotLocale.swift */,
 				8403011F1EB56F0000B8E607 /* GradientView.swift */,
 				846ACC6E1EAFE50700134DE6 /* Assets.xcassets */,
@@ -361,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84142B101EB69AA700714173 /* MeterViewController.swift in Sources */,
+				84F43D691ED1339E00E6EAEC /* SpotTVCell.swift in Sources */,
 				84E4FD851ECA7E1C00DCF9C1 /* SpotLocale.swift in Sources */,
 				846ACC6A1EAFE50700134DE6 /* ViewController.swift in Sources */,
 				846ACC681EAFE50700134DE6 /* AppDelegate.swift in Sources */,
@@ -368,6 +375,7 @@
 				840301201EB56F0000B8E607 /* GradientView.swift in Sources */,
 				84035F661EC2DF820054CF9B /* GarageViewController.swift in Sources */,
 				84E4FD831ECA76E900DCF9C1 /* MapViewController.swift in Sources */,
+				84F43D671ED12F8800E6EAEC /* FindSpotViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,15 +39,15 @@ class ViewController: UIViewController {
         FIRDatabase.database().persistenceEnabled = true
         spotRoot = FIRDatabase.database().reference(withPath: "ParkingSpots")
         
-        let garage1 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.278882, longitude:  -120.661616), named: "1260 Chorro St Garage", detail: "medium")
+        let garage1 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.278882, longitude:  -120.661616), named: "1260 Chorro St Garage", detail: "medium impact")
         let g1Ref = spotRoot?.child(garage1.title!)
         g1Ref?.setValue(garage1.toAnyObject())
         
-        let garage2 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.281721, longitude:  -120.664026), named: "812 Palm St Garage", detail: "low")
+        let garage2 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.281721, longitude:  -120.664026), named: "812 Palm St Garage", detail: "low impact")
         let g2Ref = spotRoot?.child(garage2.title!)
         g2Ref?.setValue(garage2.toAnyObject())
 
-        let garage3 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.281721, longitude:  -120.664026), named: "Public Works Garage", detail: "low")
+        let garage3 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.282253, longitude:  -120.662957), named: "Public Works Garage", detail: "medium impact")
         let g3Ref = spotRoot?.child(garage3.title!)
         g3Ref?.setValue(garage3.toAnyObject())
         

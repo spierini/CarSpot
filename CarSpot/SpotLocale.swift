@@ -17,7 +17,7 @@ class SpotLocale : NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     let ref: FIRDatabaseReference?
     var title: String? //spot name
-    var subtitle: String? //low, medium, high
+    var subtitle: String? //Traffic: low, medium, high
     
     var latitude: Double
     var longitude: Double
