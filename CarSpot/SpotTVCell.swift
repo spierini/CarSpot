@@ -14,6 +14,7 @@ class SpotTVCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var traffic: UILabel!
     @IBOutlet weak var coordinate: UILabel!
+    @IBOutlet weak var photo: UIImageView!
     
 
     override func awakeFromNib() {

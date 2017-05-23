@@ -11,14 +11,16 @@ import MapKit
 import CoreLocation
 
 
-class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
+class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var imageDisplay: UIImageView!
     @IBOutlet weak var parkingMeterButton: UIButton!
     @IBOutlet weak var parkingGarageButton: UIButton!
     
     var locationManager = CLLocationManager()
     var currentLocation = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+    var spotName = "Meter Spot"
     
     // MARK: IBAction functions
     
@@ -108,6 +110,13 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
         button.layer.cornerRadius = 5
     }
     
+    //remove dissallowed punctuation from string
+    func removeSpecialCharsFromString(text: String) -> String {
+        let acceptedChars : Set<Character> =
+            Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890".characters)
+        return String(text.characters.filter {acceptedChars.contains($0) })
+    }
+    
     // MARK: Location Manager Functions
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -157,6 +166,14 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - UITextFieldDelegate Functions
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+        spotName = removeSpecialCharsFromString(text: nameTextField.text!)
+        
+        return true
+    }
+    
     
     // MARK: - Navigation
 
@@ -173,6 +190,7 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
             
             destinationVC.photoTaken = imageDisplay.image
             destinationVC.currLoc = currentLocation
+            destinationVC.spotName = spotName
             
         }
         else if(segue.identifier == "garageSegue") {
@@ -181,6 +199,7 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
             
             destinationVC.photoTaken = imageDisplay.image
             destinationVC.currLoc = currentLocation
+            destinationVC.spotName = spotName
         }
     }
  

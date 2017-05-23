@@ -15,6 +15,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var spotImage: UIImage?
     //saved location when user had parked
     var spotCoordinate: CLLocationCoordinate2D? //35.300618, -120.662464   (on campus - where parked)
+    var spotName: String?
     
     //current location of user trying to find their car
     var currentCoordinate = CLLocationCoordinate2D(latitude: 35.281076, longitude: -120.660846)
@@ -48,16 +49,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         let startRegion = MKCoordinateRegion(center: spotCoordinate!, span: span)
         map.setRegion(startRegion, animated: true)
-    }
-    
-    @IBAction func saveSpot(_ sender: UIBarButtonItem) {
-        
-        //send all relevant data to firebase to store as new spot
-//        let savedSpot = SpotLocale(coord: spotCoordinate!, named: "NoNameYet", detail: "N/A")
-//        
-//        let destVC = self.storyboard?.instantiateViewController(withIdentifier: "findSpotVC") as! FindSpotViewController
-//        destVC.addSpot(newSpot: savedSpot)
-//        self.present(destVC, animated: true, completion: nil)
     }
     
     
@@ -106,6 +97,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //set current location
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        //UNCOMMENT THESE TWO LINES TO GET ACTUAL COORDINATES WHEN LIVE TESTING
 //        currentCoordinate.latitude = locValue.latitude
 //        currentCoordinate.longitude = locValue.longitude
         print("currlocations = \(locValue.latitude) \(locValue.longitude)")
@@ -117,7 +109,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         //
-        if (annotation.subtitle! == "Spot HQ") {
+        if (annotation.subtitle! == "Parking Spot") {
             
             // Better to make this class property
             let annotationIdentifier = "AnnotationIdentifier"
@@ -165,7 +157,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func gatherLocales() {
         
         let currCoord = SpotLocale(coord: currentCoordinate, named: "Current Location", detail: "Current HQ")
-        let spotCoord = SpotLocale(coord: spotCoordinate!, named: "Parking Spot", detail: "Spot HQ")
+        let spotCoord = SpotLocale(coord: spotCoordinate!, named: spotName!, detail: "Parking Spot")
         spotLocales.append(currCoord)
         spotLocales.append(spotCoord)
     }
@@ -216,7 +208,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "saveSegue" {
-            let savedSpot = SpotLocale(coord: spotCoordinate!, named: "NoNameYet", detail: "N/A")
+            let savedSpot = SpotLocale(coord: spotCoordinate!, named: spotName!, detail: "N/A")
 
             let destVC = segue.destination as? FindSpotViewController
             

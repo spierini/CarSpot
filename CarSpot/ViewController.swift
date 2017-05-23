@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         FIRDatabase.database().persistenceEnabled = true
         spotRoot = FIRDatabase.database().reference(withPath: "ParkingSpots")
         
-        let garage1 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.278882, longitude:  -120.661616), named: "1260 Chorro St Garage", detail: "medium impact")
+        let garage1 = SpotLocale(coord: CLLocationCoordinate2D(latitude: 35.278882, longitude:  -120.661616), named: "1260 Chorro St Garage", detail: "high impact")
         let g1Ref = spotRoot?.child(garage1.title!)
         g1Ref?.setValue(garage1.toAnyObject())
         
@@ -59,20 +59,6 @@ class ViewController: UIViewController {
         
     }
     
-//    func setRetrieveCallback() {
-//        spotRoot?.queryOrdered(byChild: "ParkingSpots").observe(.value, with:
-//            { snapshot in
-//                
-//                var newStands = [TacoStand]()
-//                
-//                for item in snapshot.children {
-//                    newStands.append(TacoStand(snapshot: item as! FIRDataSnapshot))
-//                }
-//                
-//                self.tacoStands = newStands
-//                self.tableView.reloadData()
-//        })
-//    }
     
     // MARK: Private functions
     

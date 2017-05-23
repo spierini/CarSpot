@@ -15,6 +15,7 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
     
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var spotTableView: UITableView!
+    @IBOutlet weak var containerView: UIView!
     
     var spotRoot : FIRDatabaseReference?
     var spotData = [SpotLocale]()
@@ -24,6 +25,12 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
     var locationManager = CLLocationManager()
     var currentLocation = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     var spotLocation : CLLocationCoordinate2D?
+    
+    
+    @IBAction func changeMapType(_ sender: UISegmentedControl) {
+        map.mapType = MKMapType(rawValue: UInt(sender.selectedSegmentIndex))!
+
+    }
 
     
     @IBAction func getDirections(_ sender: UIButton) {
@@ -62,6 +69,16 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        spotTableView.rowHeight = 80
+        spotTableView.layer.cornerRadius = 5
+        spotTableView.showsVerticalScrollIndicator = false
+        
+        containerView.backgroundColor = UIColor.clear
+        containerView.layer.shadowColor = UIColor.darkGray.cgColor
+        containerView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        containerView.layer.shadowOpacity = 1.0
+        containerView.layer.shadowRadius = 2
+        containerView.layer.cornerRadius = 5
         
 //        FIRDatabase.database().persistenceEnabled = true
         spotRoot = FIRDatabase.database().reference(withPath: "ParkingSpots")
@@ -85,6 +102,8 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             { snapshot in
                 
                 var newSpots = [SpotLocale]()
+                
+                //add saved spot if sent from MapViewController
                 self.addSavedSpot(newSpot: self.savedSpot)
                 
                 for item in snapshot.children {
@@ -152,6 +171,14 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
         cell?.traffic.text = thisSpot.subtitle
         cell?.coordinate.text = "\(thisSpot.latitude)\n\(thisSpot.longitude)"
         
+        if(thisSpot.subtitle == "N/A") {
+            cell?.photo.image = UIImage(named: "meter")
+        }
+        else {
+            cell?.photo.image = UIImage(named: "parking")
+
+        }
+        
         return cell!
         
     }
@@ -185,10 +212,31 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
     //add the pins based on CSCLocale annotations added
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        let pinView = MKPinAnnotationView()
-        pinView.pinTintColor = .red
-        pinView.canShowCallout = true
-        return pinView
+        switch annotation.subtitle! {
+        case "low impact"?:
+            let pinView = MKPinAnnotationView()
+            pinView.pinTintColor = .green
+            pinView.canShowCallout = true
+            return pinView
+            
+        case "medium impact"?:
+            let pinView = MKPinAnnotationView()
+            pinView.pinTintColor = .yellow
+            pinView.canShowCallout = true
+            return pinView
+            
+        case "high impact"?:
+            let pinView = MKPinAnnotationView()
+            pinView.pinTintColor = .red
+            pinView.canShowCallout = true
+            return pinView
+        default:
+            //for user saved spots
+            let pinView = MKPinAnnotationView()
+            pinView.pinTintColor = .blue
+            pinView.canShowCallout = true
+            return pinView
+        }
     }
     
     /*

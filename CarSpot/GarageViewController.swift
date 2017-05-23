@@ -31,9 +31,10 @@ class GarageViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     var isGrantedNotificationAccess:Bool = false
     
-    //picture and location saved at time of parking
+    //picture, name, and location saved at time of parking
     var photoTaken: UIImage?
     var currLoc: CLLocationCoordinate2D?
+    var spotName: String?
     
     //for displaying notification when app is in foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -217,6 +218,8 @@ class GarageViewController: UIViewController, UNUserNotificationCenterDelegate {
             
             destinationVC.spotImage = photoTaken
             destinationVC.spotCoordinate = currLoc
+            destinationVC.spotName = spotName
+
             
         }
         

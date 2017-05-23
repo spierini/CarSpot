@@ -33,9 +33,10 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var timer : Timer?
     var isGrantedNotificationAccess:Bool = false
     
-    //picture and location saved at time of parking
+    //picture, name, and location saved in previous ViewController
     var photoTaken: UIImage?
     var currLoc: CLLocationCoordinate2D?
+    var spotName: String?
 
 
     //for displaying notification when app is in foreground
@@ -264,6 +265,7 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             
             destinationVC.spotImage = photoTaken
             destinationVC.spotCoordinate = currLoc
+            destinationVC.spotName = spotName
             
         }
         
