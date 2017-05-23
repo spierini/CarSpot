@@ -13,6 +13,7 @@ import MapKit
 
 class GarageViewController: UIViewController, UNUserNotificationCenterDelegate {
     
+    @IBOutlet weak var findCarButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
@@ -114,8 +115,19 @@ class GarageViewController: UIViewController, UNUserNotificationCenterDelegate {
     func initInterface() {
         startButton.layer.cornerRadius = 0.5 * startButton.bounds.size.width
         startButton.clipsToBounds = true
+        startButton.layer.shadowColor = UIColor.darkGray.cgColor
+        startButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        startButton.layer.shadowOpacity = 1.0
+        startButton.layer.shadowRadius = 5
+        
         stopButton.layer.cornerRadius = 0.5 * startButton.bounds.size.width
         stopButton.clipsToBounds = true
+        stopButton.layer.shadowColor = UIColor.darkGray.cgColor
+        stopButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        stopButton.layer.shadowOpacity = 1.0
+        stopButton.layer.shadowRadius = 2
+        
+        giveButtonEffects(button: findCarButton)
         
         stopButton.isEnabled = false //stopButton.isHidden = true
         
@@ -155,6 +167,8 @@ class GarageViewController: UIViewController, UNUserNotificationCenterDelegate {
             //closure is third argument that is between brackets
             (alert: UIAlertAction!) -> Void in
             print("You pressed button OK")
+            self.timer!.invalidate()
+
         }
         
         //associate alert with the controller action
@@ -202,6 +216,16 @@ class GarageViewController: UIViewController, UNUserNotificationCenterDelegate {
     func moneyText(_ s: Double) -> String {
         
         return String(round(100*s)/100)
+    }
+    
+    // create dropshadows and rounded edges for buttons
+    func giveButtonEffects(button: UIButton) {
+        
+        button.layer.shadowColor = UIColor.darkGray.cgColor
+        button.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 2
+        button.layer.cornerRadius = 5
     }
     
     

@@ -19,6 +19,7 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var findCarButton: UIButton!
     
     @IBOutlet weak var alarmSwitch: UISwitch!
     @IBOutlet weak var alarmLabel: UILabel!
@@ -165,10 +166,24 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     //provide initial setup for UI
     func initInterface() {
+        
+        startButton.layer.shadowColor = UIColor.darkGray.cgColor
+        startButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        startButton.layer.shadowOpacity = 1.0
+        startButton.layer.shadowRadius = 2
         startButton.layer.cornerRadius = 0.5 * startButton.bounds.size.width
         startButton.clipsToBounds = true
+        
+        stopButton.layer.shadowColor = UIColor.darkGray.cgColor
+        stopButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        stopButton.layer.shadowOpacity = 1.0
+        stopButton.layer.shadowRadius = 2
         stopButton.layer.cornerRadius = 0.5 * startButton.bounds.size.width
         stopButton.clipsToBounds = true
+
+
+        
+        giveButtonEffects(button: findCarButton)
         
         stopButton.isEnabled = false //stopButton.isHidden = true
         timerLabel.isHidden = true
@@ -250,6 +265,15 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         return s < 10 ? "0\(s)" : "\(s)"
     }
     
+    // create dropshadows and rounded edges for buttons
+    func giveButtonEffects(button: UIButton) {
+        
+        button.layer.shadowColor = UIColor.darkGray.cgColor
+        button.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 2
+        button.layer.cornerRadius = 5
+    }
 
 
     

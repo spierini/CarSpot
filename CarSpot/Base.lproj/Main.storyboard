@@ -97,6 +97,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5H-Ss-2b4">
                                 <rect key="frame" x="143" y="334" width="88" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Directions"/>
                                 <connections>
                                     <action selector="getDirections:" destination="ls2-nF-WWx" eventType="touchUpInside" id="2RN-mH-8lJ"/>
@@ -194,6 +195,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="N0t-Pu-t5g" id="vvT-1B-uNT"/>
+                        <outlet property="directionButton" destination="j5H-Ss-2b4" id="R8q-oa-WuY"/>
                         <outlet property="map" destination="V3I-vA-yeg" id="9mX-5D-KMf"/>
                         <outlet property="spotTableView" destination="20Z-1n-rsk" id="TLf-5H-dWd"/>
                         <segue destination="FDU-vj-aa5" kind="unwind" identifier="exitSegue" unwindAction="setSpotUnwindWithSegue:" id="GeM-BK-vc0"/>
@@ -396,6 +398,7 @@
                     <connections>
                         <outlet property="alarmLabel" destination="cy1-Hf-JWt" id="iIb-NI-Ejb"/>
                         <outlet property="alarmSwitch" destination="J2s-Ov-tcP" id="kpT-vg-hmx"/>
+                        <outlet property="findCarButton" destination="DoW-2F-Zko" id="vua-Rp-tEB"/>
                         <outlet property="hourLabel" destination="iec-jZ-H0t" id="Asv-s3-70m"/>
                         <outlet property="minLabel" destination="qUA-A1-U0h" id="RCo-tG-0oD"/>
                         <outlet property="pickerView" destination="8qK-zp-ju5" id="zcG-xc-gkz"/>
@@ -553,6 +556,7 @@
                     <connections>
                         <outlet property="alarmSwitch" destination="WUm-79-XoH" id="IHV-ig-XpE"/>
                         <outlet property="currPriceLabel" destination="nFt-3c-I1o" id="uYv-AD-ATY"/>
+                        <outlet property="findCarButton" destination="R7k-sr-GF3" id="afU-pl-T4F"/>
                         <outlet property="priceLabel" destination="STj-03-4G8" id="Aca-yU-ALf"/>
                         <outlet property="priceLimitLabel" destination="rrH-lX-BQS" id="TXj-hp-NPJ"/>
                         <outlet property="priceSlider" destination="qTK-Xd-vGx" id="sM5-uk-oBM"/>
@@ -780,7 +784,7 @@
         <image name="parking-1" width="118" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bhe-ek-a3v"/>
+        <segue reference="KpQ-gR-cLz"/>
         <segue reference="oxw-oE-Lp4"/>
     </inferredMetricsTieBreakers>
 </document>

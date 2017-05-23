@@ -16,6 +16,7 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var spotTableView: UITableView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var directionButton: UIButton!
     
     var spotRoot : FIRDatabaseReference?
     var spotData = [SpotLocale]()
@@ -80,6 +81,8 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
         containerView.layer.shadowRadius = 2
         containerView.layer.cornerRadius = 5
         
+        giveButtonEffects(button: directionButton)
+        
 //        FIRDatabase.database().persistenceEnabled = true
         spotRoot = FIRDatabase.database().reference(withPath: "ParkingSpots")
         setRetrieveCallback()
@@ -140,6 +143,16 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             print("No saved spot added")
         }
         
+    }
+    
+    // create dropshadows and rounded edges for buttons
+    func giveButtonEffects(button: UIButton) {
+        
+        button.layer.shadowColor = UIColor.darkGray.cgColor
+        button.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 2
+        button.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {
