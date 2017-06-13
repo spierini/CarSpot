@@ -16,6 +16,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     //saved location when user had parked
     var spotCoordinate: CLLocationCoordinate2D? //35.300618, -120.662464   (on campus - where parked)
     var spotName: String?
+    //retrieve an optional for the SpotLocale subtitle (traffic level) from garageViewController
+    var traffic: String?
     
     //current location of user trying to find their car
     var currentCoordinate = CLLocationCoordinate2D(latitude: 35.281076, longitude: -120.660846)
@@ -89,6 +91,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         configureLocationManager()
         //zoom map to include all annotations
         self.map.showAnnotations(self.spotLocales, animated: true)
+        self.map.selectAnnotation(self.spotLocales.first!, animated: true)
+
 
 
     }
@@ -98,9 +102,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         //set current location
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         //UNCOMMENT THESE TWO LINES TO GET ACTUAL COORDINATES WHEN LIVE TESTING
-//        currentCoordinate.latitude = locValue.latitude
-//        currentCoordinate.longitude = locValue.longitude
-        print("currlocations = \(locValue.latitude) \(locValue.longitude)")
+        currentCoordinate.latitude = locValue.latitude
+        currentCoordinate.longitude = locValue.longitude
+        print("currlocations = \(currentCoordinate.latitude) \(currentCoordinate.longitude)")
         
 
     }
@@ -109,7 +113,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         //
-        if (annotation.subtitle! == "Parking Spot") {
+        if (annotation.subtitle! == "Your Parking Spot") {
             
             // Better to make this class property
             let annotationIdentifier = "AnnotationIdentifier"
@@ -134,12 +138,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             return annotationView
         }
         
-        if (annotation.subtitle! == "Current HQ") {
-            let pinView = MKPinAnnotationView()
-            pinView.pinTintColor = .green
-            pinView.canShowCallout = true
-            return pinView
-        }
         
         return nil
     }
@@ -156,9 +154,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func gatherLocales() {
         
-        let currCoord = SpotLocale(coord: currentCoordinate, named: "Current Location", detail: "Current HQ")
-        let spotCoord = SpotLocale(coord: spotCoordinate!, named: spotName!, detail: "Parking Spot")
-        spotLocales.append(currCoord)
+//        let currCoord = SpotLocale(coord: currentCoordinate, named: "Current Location", detail: "Current HQ")
+        let spotCoord = SpotLocale(coord: spotCoordinate!, named: spotName!, detail: "Your Parking Spot")
+//        spotLocales.append(currCoord)
         spotLocales.append(spotCoord)
     }
     
@@ -208,7 +206,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "saveSegue" {
-            let savedSpot = SpotLocale(coord: spotCoordinate!, named: spotName!, detail: "N/A")
+            let savedSpot = SpotLocale(coord: spotCoordinate!, named: spotName!, detail: traffic!)
 
             let destVC = segue.destination as? FindSpotViewController
             

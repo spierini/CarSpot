@@ -36,6 +36,7 @@ class GarageViewController: UIViewController, UNUserNotificationCenterDelegate {
     var photoTaken: UIImage?
     var currLoc: CLLocationCoordinate2D?
     var spotName: String?
+    var traffic: String?
     
     //for displaying notification when app is in foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -53,6 +54,7 @@ class GarageViewController: UIViewController, UNUserNotificationCenterDelegate {
         super.viewDidLoad()
 
         initInterface()
+        traffic = "medium impact"
         
         //request notification permission
         UNUserNotificationCenter.current().requestAuthorization(
@@ -243,6 +245,7 @@ class GarageViewController: UIViewController, UNUserNotificationCenterDelegate {
             destinationVC.spotImage = photoTaken
             destinationVC.spotCoordinate = currLoc
             destinationVC.spotName = spotName
+            destinationVC.traffic = traffic
 
             
         }

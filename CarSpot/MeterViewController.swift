@@ -38,6 +38,7 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var photoTaken: UIImage?
     var currLoc: CLLocationCoordinate2D?
     var spotName: String?
+    var traffic: String?
 
 
     //for displaying notification when app is in foreground
@@ -100,6 +101,7 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         fillData()
         //set up initial UI look
         initInterface()
+        traffic = "N/A"
         
         //request notification permission
         UNUserNotificationCenter.current().requestAuthorization(
@@ -290,6 +292,7 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             destinationVC.spotImage = photoTaken
             destinationVC.spotCoordinate = currLoc
             destinationVC.spotName = spotName
+            destinationVC.traffic = traffic
             
         }
         

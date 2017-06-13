@@ -6,6 +6,14 @@
 //  Copyright © 2017 Santi Angelo Pierini. All rights reserved.
 //
 
+/**  ADDITIONAL INFORMATION FOR GRADING
+ *
+ * The app will send a notification to the user (foreground and background) when 1 minute remaining on timer. An Alarm will trigger at 00:00
+ * The user will get a notification on their garage timer when their maximum price preference has been reached. to test this just set the max price to $0.00 and start the timer. An alert and notification will be triggered
+ * You must 'Save' a spot in order to add it to the database and the 'Find Car' table view
+ * Pin color represents traffic data at the 3 default parking garages in SLO. Blue means N/A
+ */
+
 import UIKit
 import UserNotifications
 import Firebase

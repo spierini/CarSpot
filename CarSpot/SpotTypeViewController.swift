@@ -20,9 +20,15 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var locationManager = CLLocationManager()
     var currentLocation = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
-    var spotName = "Meter Spot"
+    var spotName = "Parking Spot"
+    
+    var useDefaultImages = true
     
     // MARK: IBAction functions
+    @IBAction func setImage(_ sender: UITapGestureRecognizer) {
+        print("tap happend")
+        giveAlert()
+    }
     
     // meter pressed
     @IBAction func parkingMeter(_ sender: UIButton) {
@@ -96,6 +102,7 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageDisplay.contentMode = .scaleToFill
             imageDisplay.image = pickedImage
+            useDefaultImages = false
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -188,7 +195,13 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
             let navVC = segue.destination as? UINavigationController
             let destinationVC = navVC?.viewControllers.first as! MeterViewController
             
-            destinationVC.photoTaken = imageDisplay.image
+            if(useDefaultImages == true) {
+                destinationVC.photoTaken = UIImage(named: "meter")
+            }
+            else {
+                destinationVC.photoTaken = imageDisplay.image
+            }
+            
             destinationVC.currLoc = currentLocation
             destinationVC.spotName = spotName
             
@@ -197,7 +210,12 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
             let navVC = segue.destination as! UINavigationController
             let destinationVC = navVC.viewControllers.first as! GarageViewController
             
-            destinationVC.photoTaken = imageDisplay.image
+            if(useDefaultImages == true) {
+                destinationVC.photoTaken = UIImage(named: "parking")
+            }
+            else {
+                destinationVC.photoTaken = imageDisplay.image
+            }
             destinationVC.currLoc = currentLocation
             destinationVC.spotName = spotName
         }
