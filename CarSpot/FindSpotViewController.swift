@@ -17,6 +17,7 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
     @IBOutlet weak var spotTableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var directionButton: UIButton!
+    @IBOutlet weak var mapContainer: UIView!
     
     var spotRoot : FIRDatabaseReference?
     var spotData = [SpotLocale]()
@@ -75,17 +76,7 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
         //set the button to be on the left side
         self.navigationItem.rightBarButtonItem = editButton
         
-        spotTableView.rowHeight = 80
-        spotTableView.layer.cornerRadius = 5
-        spotTableView.showsVerticalScrollIndicator = false
-        
-        containerView.backgroundColor = UIColor.clear
-        containerView.layer.shadowColor = UIColor.darkGray.cgColor
-        containerView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        containerView.layer.shadowOpacity = 1.0
-        containerView.layer.shadowRadius = 2
-        containerView.layer.cornerRadius = 5
-        
+        initEffects()
         giveButtonEffects(button: directionButton)
         
 //        FIRDatabase.database().persistenceEnabled = true
@@ -437,6 +428,27 @@ class FindSpotViewController: UIViewController, MKMapViewDelegate, UITableViewDe
         else {
             return .black
         }
+    }
+    
+    func initEffects() {
+        spotTableView.rowHeight = 80
+        spotTableView.layer.cornerRadius = 5
+        spotTableView.showsVerticalScrollIndicator = false
+        
+        containerView.backgroundColor = UIColor.clear
+        containerView.layer.shadowColor = UIColor.darkGray.cgColor
+        containerView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        containerView.layer.shadowOpacity = 1.0
+        containerView.layer.shadowRadius = 2
+        containerView.layer.cornerRadius = 5
+        
+        mapContainer.backgroundColor = UIColor.clear
+        mapContainer.layer.shadowColor = UIColor.darkGray.cgColor
+        mapContainer.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        mapContainer.layer.shadowOpacity = 1.0
+        mapContainer.layer.shadowRadius = 2
+        mapContainer.layer.cornerRadius = 5
+        map.layer.cornerRadius = 5
     }
     
     /*

@@ -31,6 +31,7 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var hours = ["0", "1", "2"]
     var minutes = ["0"]
     var numSeconds = 0
+    
     var timer : Timer?
     var isGrantedNotificationAccess:Bool = false
     
@@ -57,12 +58,16 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     //when pressing the start button
     @IBAction func startTimer(_ sender: UIButton) {
         
-        //get number of seconds from the hour/minute pickerview selection
+        // get number of seconds from the hour/minute pickerview selection
         numSeconds = (pickerView.selectedRow(inComponent: 0) * 3600) + (pickerView.selectedRow(inComponent: 1) * 60)
+        
         // perform action function every 1.0 time interval
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
+        // extract Hours, Minutes, Seconds
         let (h,m,s) = secondsToHoursMinutesSeconds(seconds: numSeconds)
+        
+        // format and set text
         timerLabel.text = "\(timeText(h)):\(timeText(m)):\(timeText(s))"
         
         
@@ -82,6 +87,7 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         
         numSeconds = 0
         timer!.invalidate()
+        
         timerLabel.text = "00:00:00"
         
         startButton.isEnabled = true//startButton.isHidden = false
@@ -173,7 +179,7 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         startButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         startButton.layer.shadowOpacity = 1.0
         startButton.layer.shadowRadius = 2
-        startButton.layer.cornerRadius = 0.5 * startButton.bounds.size.width
+        startButton.layer.cornerRadius = 0.5 * startButton.bounds.size.width //
         startButton.clipsToBounds = true
         
         stopButton.layer.shadowColor = UIColor.darkGray.cgColor
@@ -203,6 +209,7 @@ class MeterViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         if(numSeconds == 60 && alarmSwitch.isOn) {
             meterNotif()
         }
+        
         if(numSeconds == 0 && alarmSwitch.isOn) {
             meterAlarm()
             timer!.invalidate()

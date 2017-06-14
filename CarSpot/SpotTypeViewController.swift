@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import MapKit
-import CoreLocation
+//import MapKit
+import CoreLocation //framework
 
 
 class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
@@ -188,9 +188,10 @@ class SpotTypeViewController: UIViewController, UIImagePickerControllerDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
         locationManager.stopUpdatingLocation()
 
-        
         if segue.identifier == "meterSegue" {
             let navVC = segue.destination as? UINavigationController
             let destinationVC = navVC?.viewControllers.first as! MeterViewController
